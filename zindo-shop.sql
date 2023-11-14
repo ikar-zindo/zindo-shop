@@ -11,6 +11,7 @@ SET time_zone = "+01:00";
 
 CREATE DATABASE IF NOT EXISTS `zindo-shop` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `zindo-shop`;
+
 --
 -- Database: `zindo-shop`
 --

@@ -57,7 +57,6 @@ CREATE TABLE `product` (
   `supplier_id` INT(11) DEFAULT NULL,
   `unit` VARCHAR(255) DEFAULT NULL,
   `price` DECIMAL(7,2) DEFAULT 0.01,
-  `img` VARCHAR(255) DEFAULT NULL,
   `description` TEXT DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `available` BOOL DEFAULT TRUE
@@ -318,6 +317,7 @@ INSERT INTO `cart_product` (`cart_id`, `product_id`) VALUES
 --
 -- Indexes for table `product`
 --
+
 ALTER TABLE `product`
   ADD KEY `category_id` (`category_id`),
   ADD KEY `supplier_id` (`supplier_id`);

@@ -322,7 +322,6 @@ ALTER TABLE `product`
   ADD KEY `category_id` (`category_id`),
   ADD KEY `supplier_id` (`supplier_id`);
 
-
 --
 -- Indexes for table `cart_product`
 --

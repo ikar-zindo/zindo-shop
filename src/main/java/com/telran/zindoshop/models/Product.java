@@ -29,10 +29,11 @@ public class Product {
    public Product() {
    }
 
-   public Product(String product_name, String unit, Double price) {
+   public Product(String product_name, String unit, Double price, String description) {
       this.product_name = product_name;
       this.unit = unit;
       this.price = price;
+      this.description = description;
    }
 
    public Long getProduct_id() {

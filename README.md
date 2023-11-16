@@ -1,6 +1,2 @@
 # zindo-shop
 
-
-
-
-

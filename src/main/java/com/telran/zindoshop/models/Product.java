@@ -2,6 +2,8 @@ package com.telran.zindoshop.models;
 
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
+
 @Entity
 @Table(name = "product")
 public class Product {
@@ -19,7 +21,7 @@ public class Product {
    @Column(name = "description")
    private String description;
    @Column(name = "created_at")
-   private String created_at;
+   private Timestamp created_at;
    @Column(name = "available")
    private Boolean available;
 
@@ -73,11 +75,11 @@ public class Product {
       this.description = description;
    }
 
-   public String getCreated_at() {
+   public Timestamp getCreated_at() {
       return created_at;
    }
 
-   public void setCreated_at(String created_at) {
+   public void setCreated_at(Timestamp created_at) {
       this.created_at = created_at;
    }
 

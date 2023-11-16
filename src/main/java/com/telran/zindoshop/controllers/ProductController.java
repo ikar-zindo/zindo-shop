@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
+import java.sql.Timestamp;
+
 @Controller
 public class ProductController {
 
@@ -33,6 +36,8 @@ public class ProductController {
                                   @RequestParam String unit,
                                   @RequestParam Double price) {
       Product product = new Product(product_name, unit, price);
+      Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+      product.setCreated_at(currentTime);
       productRepository.save(product);
       return "redirect:/product";
    }

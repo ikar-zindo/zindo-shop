@@ -1,4 +1,4 @@
-package com.telran.zindoshop.models;
+package com.telran.zindoshop.test;
 
 import jakarta.persistence.*;
 

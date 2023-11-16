@@ -1,6 +1,5 @@
-package com.telran.zindoshop.controllers;
+package com.telran.zindoshop.test;
 
-import com.telran.zindoshop.models.Post;
 import com.telran.zindoshop.repo.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Optional;
 
 @Controller

@@ -115,7 +115,7 @@
 	<section class="text-center container py-lg-0">
 		<div class="row py-lg-2">
 			<div class="col-lg-6 col-md-8 mx-auto">
-				<a href="product/add" class="btn btn-primary my-2">Добавить товар</a>
+				<a href="product/add" class="btn btn-primary my-2" method="get">Добавить товар</a>
 			</div>
 		</div>
 	</section>
@@ -147,7 +147,7 @@
 										</button>
 									</form>
 								</div>
-								<p th:text="|${el.price}| + ' €'" class="text-body-secondary"/>
+								<p th:text="'Price: ' + |${el.price}| + ' €'" class="text-warning text-body-secondary"/>
 							</div>
 						</div>
 					</div>

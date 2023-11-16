@@ -1,7 +1,7 @@
 package com.telran.zindoshop.controllers;
 
 import com.telran.zindoshop.models.Product;
-import com.telran.zindoshop.repo.ProductRepository;
+import com.telran.zindoshop.test.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Optional;
 
 @Controller

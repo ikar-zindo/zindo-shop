@@ -1,4 +1,4 @@
-package com.telran.zindoshop.repo;
+package com.telran.zindoshop.test;
 
 import com.telran.zindoshop.models.Product;
 import org.springframework.data.repository.CrudRepository;

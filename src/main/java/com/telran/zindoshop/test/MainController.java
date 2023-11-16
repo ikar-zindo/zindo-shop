@@ -1,4 +1,4 @@
-package com.telran.zindoshop.controllers;
+package com.telran.zindoshop.test;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

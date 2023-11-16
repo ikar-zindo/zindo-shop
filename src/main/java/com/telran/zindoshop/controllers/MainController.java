@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
    @GetMapping("/")
-   public String home(Model model) {
-      model.addAttribute("title", "Главная страница");
-      return "index";
+   public String adminPanel(Model model) {
+      model.addAttribute("title", "Admin panel");
+      return "admin-panel";
    }
 
-   @GetMapping("/registration")
-   public String registration(Model model) {
-      model.addAttribute("title", "Регистрация");
-      return "registration";
+   @GetMapping("/test")
+   public String products(Model model) {
+      model.addAttribute("title", "List of all products");
+      return "admin-panel";
    }
 
 }

@@ -1,8 +1,9 @@
-package com.telran.zindoshop.models;
+package com.telran.zindoshop._1domain.jpa;
 
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 @Table(name = "product")
@@ -34,6 +35,8 @@ public class Product {
       this.unit = unit;
       this.price = price;
       this.description = description;
+      created_at = Timestamp.from(Instant.now());
+      available = true;
    }
 
    public Long getProduct_id() {

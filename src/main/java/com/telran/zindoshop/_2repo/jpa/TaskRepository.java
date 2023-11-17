@@ -4,5 +4,5 @@
 //import org.springframework.data.repository.CrudRepository;
 //import org.springframework.scheduling.config.Task;
 //
-//public interface TaskRepository extends CrudRepository<Task, Long> {
+//public interface TaskRepository extends JpaRepository<Task, Long> {
 //}

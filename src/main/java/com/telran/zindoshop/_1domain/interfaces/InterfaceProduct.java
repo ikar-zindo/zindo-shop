@@ -2,7 +2,7 @@ package com.telran.zindoshop._1domain.interfaces;
 
 import java.sql.Timestamp;
 
-public interface Product {
+public interface InterfaceProduct {
 
    long getId();
 

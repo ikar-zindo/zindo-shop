@@ -46,14 +46,6 @@ public class ProductController {
       return "redirect:/product";
    }
 
-   @GetMapping("/product-1")
-   public String getAllPr2(Model model) {
-      Iterable<Product> products = productRepository.findAll();
-      model.addAttribute("products", products);
-      return "product-1";
-   }
-
-
    @GetMapping("/product/{id}")
    public String productInfo(@PathVariable(value = "id") long id, Model model) {
       if (!productRepository.existsById(id)) {

@@ -1,7 +1,8 @@
 package com.telran.zindoshop._4controllers;
 
-import com.telran.zindoshop._1domain.jpa.Product;
-import com.telran.zindoshop._2repo.jpa.ProductRepository;
+import com.telran.zindoshop._1domain.jpa.JpaProduct;
+import com.telran.zindoshop._2repo.ProductRepository;
+import com.telran.zindoshop._3service.jpa.JpaProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +21,13 @@ public class ProductController {
    @Autowired
    private ProductRepository productRepository;
 
+//   @Autowired
+//   private JpaProductService service;
+
 
    @GetMapping("/product")
    public String getAll(Model model) {
-      Iterable<Product> products = productRepository.findAll();
+      Iterable<JpaProduct> products = productRepository.findAll();
       model.addAttribute("products", products);
       return "product";
    }
@@ -39,7 +43,7 @@ public class ProductController {
                                   @RequestParam Double price,
                                   @RequestParam String description,
                                   Model model) {
-      Product product = new Product(product_name, unit, price, description);
+      JpaProduct product = new JpaProduct(product_name, unit, price, description);
       Timestamp currentTime = new Timestamp(System.currentTimeMillis());
       product.setCreated_at(currentTime);
       productRepository.save(product);
@@ -52,8 +56,8 @@ public class ProductController {
          return "redirect:/product";
       }
 
-      Optional<Product> product = productRepository.findById(id);
-      ArrayList<Product> products = new ArrayList<>();
+      Optional<JpaProduct> product = productRepository.findById(id);
+      ArrayList<JpaProduct> products = new ArrayList<>();
       product.ifPresent(products::add);
       model.addAttribute("product", products);
       return "product-info";
@@ -65,8 +69,8 @@ public class ProductController {
          return "redirect:/product";
       }
 
-      Optional<Product> product = productRepository.findById(id);
-      ArrayList<Product> products = new ArrayList<>();
+      Optional<JpaProduct> product = productRepository.findById(id);
+      ArrayList<JpaProduct> products = new ArrayList<>();
       product.ifPresent(products::add);
       model.addAttribute("product", products);
       return "product-edit";
@@ -79,7 +83,7 @@ public class ProductController {
                                @RequestParam Double price,
                                @RequestParam String description,
                                Model model) {
-      Product product = productRepository.findById(id).orElseThrow();
+      JpaProduct product = productRepository.findById(id).orElseThrow();
 
       product.setProduct_name(product_name);
       product.setUnit(unit);
@@ -93,7 +97,7 @@ public class ProductController {
    @PostMapping("/product/{id}/remove")
    public String productDelete(@PathVariable(value = "id") long id,
                                Model model) {
-      Product product = productRepository.findById(id).orElseThrow();
+      JpaProduct product = productRepository.findById(id).orElseThrow();
       product.setProduct_name(product.getProduct_name());
       productRepository.delete(product);
 

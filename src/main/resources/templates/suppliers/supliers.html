@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" class="h-100" data-bs-theme="auto">
 <head>
 	<script type="text/javascript" th:src="@{/assets/js/color-modes.js}"></script>
-	<title>Dashboard</title>
+	<title>Suppliers</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta charset="utf-8">
@@ -136,25 +136,36 @@
 			</div>
 		</div>
 
+
+		<!--Main-->
 		<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-
-			<div class="container mt-5 mb-5">
-				<h1>Добавление товара</h1>
-				<form action="/product/add" method="post">
-					<input type="text" name="product_name" placeholder="Введите имя товара" class="form-control"><br>
-					<input type="text" name="unit" placeholder="Введите тип упаковки" class="form-control"><br>
-					<input type="number" name="price" placeholder="Введите цену товара" class="form-control" step="any"><br>
-					<textarea name="description" placeholder="Введите описание товара" class="form-control"
-								 step="any"></textarea><br>
-					<!--			<textarea name="description" placeholder="Введите описание товара" class="form-control"></textarea><br>-->
-					<button type="submit" class="btn btn-success">Добавить товар</button>
-				</form>
+			<div
+					  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+				<h1 class="h2">Dashboard</h1>
+				<div class="btn-toolbar mb-2 mb-md-0">
+					<div class="btn-group me-2">
+						<button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+					</div>
+					<button type="button"
+							  class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
+						<svg class="bi">
+							<use xlink:href="#calendar3"/>
+						</svg>
+						This week
+					</button>
+				</div>
 			</div>
+
+			<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+
+<!--			<div th:insert="/blocks/table-products"></div>-->
 
 			<foot th:insert="/blocks/footer :: footer"></foot>
 
 		</main>
+
+
 	</div>
 </div>
 <script type="text/javascript" th:src="@{/assets/dist/js/bootstrap.bundle.min.js}"
@@ -166,7 +177,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
 		  integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp"
 		  crossorigin="anonymous"></script>
-<script type="text/javascript" th:src="@{/assets/dist/css/dashboard.css}"></script>
+<script type="text/javascript" th:src="@{/assets/js/dashboard.js}"></script>
 </body>
 
 </html>

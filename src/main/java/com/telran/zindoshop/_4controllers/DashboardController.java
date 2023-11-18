@@ -1,7 +1,7 @@
 package com.telran.zindoshop._4controllers;
 
-import com.telran.zindoshop._1domain.jpa.Product;
-import com.telran.zindoshop._2repo.jpa.ProductRepository;
+import com.telran.zindoshop._1domain.jpa.JpaProduct;
+import com.telran.zindoshop._2repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +13,9 @@ public class DashboardController {
    @Autowired
    private ProductRepository productRepository;
 
-   @GetMapping("/")
+   @GetMapping("/dashboard")
    public String getAll(Model model) {
-      Iterable<Product> products = productRepository.findAll();
+      Iterable<JpaProduct> products = productRepository.findAll();
       model.addAttribute("products", products);
       return "dashboard";
    }

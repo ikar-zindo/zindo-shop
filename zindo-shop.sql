@@ -23,9 +23,9 @@ USE `zindo-shop`;
 --
 
 CREATE TABLE `category` (
-  `сategory_id` INT(11) PRIMARY KEY UNIQUE AUTO_INCREMENT,
+  `category_id` INT(11) PRIMARY KEY UNIQUE AUTO_INCREMENT,
   `category_name` VARCHAR(255) DEFAULT NULL,
-  `description` VARCHAR(255) DEFAULT NULL,
+  `description` VARCHAR(2550) DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `available` BOOL DEFAULT TRUE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -325,6 +325,7 @@ ALTER TABLE `product`
 --
 -- Indexes for table `cart_product`
 --
+
 ALTER TABLE `cart_product`
   ADD KEY `cart_id` (`cart_id`),
   ADD KEY `product_id` (`product_id`);
@@ -366,3 +367,39 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+-- --------------------------------------------------------
+
+--
+-- Additional tables
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `task` (
+  `task_id` BIGINT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(2000) NOT NULL,
+  `created_at` TIMESTAMP(6) NOT NULL,
+  PRIMARY KEY (`task_id`)
+)ENGINE = InnoDBDEFAULT CHARACTER SET = utf8;
+
+
+--
+-- Dumping data for table `cart`
+--
+
+
+
+
+
+--
+-- Indexes for table `product`
+--
+
+ALTER TABLE `task`
+  ADD KEY `task_id` (`task_id`),

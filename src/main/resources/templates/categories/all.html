@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" class="h-100" data-bs-theme="auto">
 <head>
 	<script type="text/javascript" th:src="@{/assets/js/color-modes.js}"></script>
-	<title>Dashboard</title>
+	<title>Categories</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta charset="utf-8">
@@ -136,25 +136,39 @@
 			</div>
 		</div>
 
+
+		<!--Main-->
 		<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-
-			<div class="container mt-5 mb-5">
-				<h1>Добавление товара</h1>
-				<form action="/product/add" method="post">
-					<input type="text" name="product_name" placeholder="Введите имя товара" class="form-control"><br>
-					<input type="text" name="unit" placeholder="Введите тип упаковки" class="form-control"><br>
-					<input type="number" name="price" placeholder="Введите цену товара" class="form-control" step="any"><br>
-					<textarea name="description" placeholder="Введите описание товара" class="form-control"
-								 step="any"></textarea><br>
-					<!--			<textarea name="description" placeholder="Введите описание товара" class="form-control"></textarea><br>-->
-					<button type="submit" class="btn btn-success">Добавить товар</button>
-				</form>
+			<h2>List of all products</h2>
+			<div class="table-responsive small">
+				<table class="table table-striped table-sm">
+					<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">category_name</th>
+						<th scope="col">description</th>
+						<th scope="col">created_at</th>
+						<th scope="col">available</th>
+					</tr>
+					</thead>
+					<tbody>
+					<div th:each="el : ${categories}">
+						<tr>
+							<td th:text="${el.id}"/>
+							<td th:text="${el.name}"/>
+							<td th:text="${el.description}"/>
+							<td th:text="${el.createdAt}"/>
+							<td th:text="${el.available}"/>
+						</tr>
+					</div>
+					</tbody>
+				</table>
 			</div>
 
-			<foot th:insert="/blocks/footer :: footer"></foot>
+			<footer th:insert="/blocks/footer :: footer"></footer>
 
-		</main>
+
 	</div>
 </div>
 <script type="text/javascript" th:src="@{/assets/dist/js/bootstrap.bundle.min.js}"
@@ -166,7 +180,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
 		  integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp"
 		  crossorigin="anonymous"></script>
-<script type="text/javascript" th:src="@{/assets/dist/css/dashboard.css}"></script>
+<script type="text/javascript" th:src="@{/assets/js/dashboard.js}"></script>
 </body>
 
 </html>

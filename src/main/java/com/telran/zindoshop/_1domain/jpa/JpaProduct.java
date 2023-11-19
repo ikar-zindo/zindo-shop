@@ -51,6 +51,11 @@ public class JpaProduct implements Product {
 
    public JpaProduct(String product_name, String unit,
                      Double price, String description) {
+      if (price == null) {
+         price = 0.1;
+      }
+
+
       this.product_name = product_name;
       this.unit = unit;
       this.price = price;
@@ -64,6 +69,10 @@ public class JpaProduct implements Product {
    public JpaProduct(String product_name, String unit,
                      Double price, Long supplierId,
                      Long categoryId, String description) {
+      if (price == null) {
+         price = 0.1;
+      }
+
       this.product_name = product_name;
       this.unit = unit;
       this.price = price;

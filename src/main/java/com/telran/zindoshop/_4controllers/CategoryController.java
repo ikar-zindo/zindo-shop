@@ -1,7 +1,6 @@
 package com.telran.zindoshop._4controllers;
 
 import com.telran.zindoshop._1domain.interfaces.Category;
-import com.telran.zindoshop._1domain.jpa.JpaCategory;
 import com.telran.zindoshop._3service.jpa.JpaCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

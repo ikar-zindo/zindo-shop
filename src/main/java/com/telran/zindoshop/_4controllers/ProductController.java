@@ -28,11 +28,27 @@ public class ProductController {
       return "product";
    }
 
+
+   /**
+    *
+    * @param model
+    * @return
+    */
    @GetMapping("/product/add")
    public String addProductForm(Model model) {
       return "product-add";
    }
 
+
+   /**
+    *
+    * @param product_name
+    * @param unit
+    * @param price
+    * @param description
+    * @param model
+    * @return
+    */
    @PostMapping("/product/add")
    public String addProductAction(@RequestParam String product_name,
                                   @RequestParam String unit,
@@ -41,8 +57,8 @@ public class ProductController {
                                   Model model) {
 
       JpaProduct product = new JpaProduct(product_name, unit, price, description);
-      Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-      product.setCreated_at(currentTime);
+//      Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+//      product.setCreated_at(currentTime);
       service.add(product);
 
       return "redirect:/product";
@@ -87,9 +103,9 @@ public class ProductController {
       product.setPrice(price);
       product.setDescription(description);
 
-      service.add(product);
+      model.addAttribute("product", product);
 
-      return "redirect:/product";
+      return "redirect:/product{id}";
    }
 
    @PostMapping("/product/{id}/remove")

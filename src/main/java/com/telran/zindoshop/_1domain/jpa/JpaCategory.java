@@ -12,6 +12,8 @@ public class JpaCategory implements Category {
 
    /**
     * проблема с копировинием имени
+    * возможно какае-то буква в другой раскладке
+    * нужно явно скопировать слово
     */
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" class="h-100" data-bs-theme="auto">
 <head>
 	<script type="text/javascript" th:src="@{/assets/js/color-modes.js}"></script>
-	<title>Add product</title>
+	<title>Dashboard</title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta charset="utf-8">
@@ -26,7 +26,7 @@
 
 	<link th:href="@{/assets/dist/css/bootstrap.min.css}" rel="stylesheet">
 
-	<style th:inline="text">
+	<style>
        .bd-placeholder-img {
            font-size: 1.125rem;
            text-anchor: middle;
@@ -109,7 +109,7 @@
 	<!-- Custom styles for this template -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
-	<link rel="stylesheet" th:href="@{/assets/dist/css/dashboard.css}"/>
+	<link th:href="@{/assets/dist/css/dashboard.css}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -128,7 +128,7 @@
 			<div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
 				  aria-labelledby="sidebarMenuLabel">
 				<div class="offcanvas-header">
-					<h5 class="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
+					<h5 class="offcanvas-title" id="sidebarMenuLabel">Zindo</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
 							  aria-label="Close"></button>
 				</div>
@@ -138,18 +138,24 @@
 
 		<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-
 			<div class="container mt-5 mb-5">
-				<h1>Add new product</h1>
-				<form action="/product/add" method="post">
-					<input type="text" name="product_name" placeholder="Введите имя товара" class="form-control"><br>
-					<input type="text" name="unit" placeholder="Введите тип упаковки" class="form-control"><br>
-					<input type="number" name="price" placeholder="Введите цену товара" class="form-control" step="any"><br>
-					<textarea name="description" placeholder="Введите описание товара" class="form-control"
-								 step="any"></textarea><br>
-					<!--			<textarea name="description" placeholder="Введите описание товара" class="form-control"></textarea><br>-->
-					<button type="submit" class="btn btn-success">Добавить товар</button>
-				</form>
+				<h1>Supplier edit</h1>
+
+				<div th:each="el : ${supplier}">
+					<form method="post">
+
+						<p class="text-primary">supplier_name: </p><input type="text" th:value="${el.name}" name="supplier_name" placeholder="Supplier name" class="form-control"><br>
+						<p class="text-primary">contact_name: </p><input type="text" th:value="${el.contactName}" name="contact_name" placeholder="Contact name" class="form-control"><br>
+						<p class="text-primary">address: </p><input type="text" th:value="${el.address}" name="address" placeholder="Address" class="form-control"><br>
+						<p class="text-primary">city: </p><input type="text" th:value="${el.city}" name="city" placeholder="City" class="form-control"><br>
+						<p class="text-primary">postal_code: </p><input type="text" th:value="${el.postalCode}" name="postal_code" placeholder="Postal code" class="form-control"><br>
+						<p class="text-primary">country: </p><input type="text" th:value="${el.country}" name="country" placeholder="Country" class="form-control"><br>
+						<p class="text-primary">phone: </p><input type="text" th:value="${el.phone}" name="phone" placeholder="Phone" class="form-control"><br>
+
+						<!--			<textarea name="description" placeholder="Введите описание товара" class="form-control"></textarea><br>-->
+						<button type="submit" class="btn btn-success">Update supplier </button>
+					</form>
+				</div>
 			</div>
 
 			<foot th:insert="/blocks/footer :: footer"></foot>

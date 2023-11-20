@@ -32,10 +32,26 @@ public class JpaProduct implements Product {
 
    // todo: прописать связи между таблицами используя JPA
    @Column(name = "supplier_id")
-   private Long supplierId;
+   private Long supplier_id;
+
+   public Long getSupplier_id() {
+      return supplier_id;
+   }
+
+   public void setSupplier_id(Long supplier_id) {
+      this.supplier_id = supplier_id;
+   }
+
+   public Long getCategory_id() {
+      return category_id;
+   }
+
+   public void setCategory_id(Long category_id) {
+      this.category_id = category_id;
+   }
 
    @Column(name = "category_id")
-   private Long categoryId;
+   private Long category_id;
 
    @Column(name = "description")
    private String description;
@@ -50,37 +66,21 @@ public class JpaProduct implements Product {
    }
 
    public JpaProduct(String product_name, String unit,
-                     Double price, String description) {
+                     Double price, Long categoryId,
+                     Long supplierId, String description,
+                     boolean available) {
       if (price == null) {
-         price = 0.1;
-      }
-
-
-      this.product_name = product_name;
-      this.unit = unit;
-      this.price = price;
-      this.description = description;
-      categoryId = 0L;
-      supplierId = 0L;
-      created_at = Timestamp.from(Instant.now());
-      available = true;
-   }
-
-   public JpaProduct(String product_name, String unit,
-                     Double price, Long supplierId,
-                     Long categoryId, String description) {
-      if (price == null) {
-         price = 0.1;
+         price = 0.01;
       }
 
       this.product_name = product_name;
       this.unit = unit;
       this.price = price;
-      this.supplierId = supplierId;
-      this.categoryId = categoryId;
+      this.category_id = categoryId;
+      this.supplier_id = supplierId;
       this.description = description;
       created_at = Timestamp.from(Instant.now());
-      available = true;
+      this.available = available;
    }
 
    public Long getProduct_id() {
@@ -147,7 +147,17 @@ public class JpaProduct implements Product {
    }
 
    public boolean getAvailable() {
-      return available;
+      return available != null ? available.booleanValue() : false;
+   }
+
+   @Override
+   public long getCategoryId() {
+      return category_id;
+   }
+
+   @Override
+   public long getSupplierId() {
+      return supplier_id;
    }
 
    public void setAvailable(Boolean available) {

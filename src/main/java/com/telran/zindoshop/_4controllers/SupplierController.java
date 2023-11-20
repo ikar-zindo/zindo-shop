@@ -1,17 +1,13 @@
 package com.telran.zindoshop._4controllers;
 
 import com.telran.zindoshop._1domain.interfaces.Supplier;
-import com.telran.zindoshop._1domain.jpa.JpaProduct;
 import com.telran.zindoshop._1domain.jpa.JpaSupplier;
 import com.telran.zindoshop._3service.jpa.JpaSupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.List;
 
 @Controller

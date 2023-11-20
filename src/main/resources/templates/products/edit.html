@@ -163,7 +163,7 @@
 
 				<div th:each="el : ${product}">
 					<form method="post">
-						<input type="text" th:value="${el.product_name}" name="product_name" placeholder="Введите имя товара"
+						<input type="text" th:value="${el.name}" name="product_name" placeholder="Введите имя товара"
 								 class="form-control"><br>
 						<input type="text" th:value="${el.unit}" name="unit" placeholder="Введите тип упаковки"
 								 class="form-control"><br>
@@ -171,7 +171,6 @@
 								 class="form-control" step="any"><br>
 						<textarea name="description" placeholder="Введите описание товара" class="form-control" step="any"
 									 th:text="${el.description}"/><br>
-						<!--			<textarea name="description" placeholder="Введите описание товара" class="form-control"></textarea><br>-->
 						<button type="submit" class="btn btn-success">Update product</button>
 					</form>
 				</div>

@@ -10,7 +10,9 @@
 				<th scope="col">unit</th>
 				<th scope="col">created_at</th>
 				<th scope="col">price</th>
-				<th scope="col">available</th>
+				<th scope="col">category</th>
+<!--				<th scope="col">supplier</th>-->
+<!--				<th scope="col">available</th>-->
 				<th scope="col">description</th>
 			</tr>
 			</thead>
@@ -22,6 +24,8 @@
 					<td th:text="${el.unit}"/>
 					<td th:text="${el.created_at}"/>
 					<td th:text="|${el.price}| + ' €'"/>
+<!--					<td th:text="|${el.category}| + ' €'"/>-->
+<!--					<td th:text="|${el.supplier}| + ' €'"/>-->
 					<td th:text="${el.available}"/>
 					<td th:text="${el.description}"/>
 				</tr>

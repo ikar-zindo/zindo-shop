@@ -4,6 +4,7 @@ import com.telran.zindoshop._1domain.interfaces.Product;
 import com.telran.zindoshop._1domain.jpa.JpaProduct;
 import com.telran.zindoshop._2repo.CategoryRepository;
 import com.telran.zindoshop._2repo.ProductRepository;
+import com.telran.zindoshop._2repo.SupplierRepository;
 import com.telran.zindoshop._3service.interfaces.ProductService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +22,7 @@ public class JpaProductService implements ProductService {
 
    private CategoryRepository categoryRepository;
 
-//   private SuppliersRepository suppliersRepository;
+   private SupplierRepository supplierRepository;
 
 
    public JpaProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
@@ -41,8 +42,10 @@ public class JpaProductService implements ProductService {
 
    @Override
    public void add(Product product) {
+
       JpaProduct savedProduct = productRepository.save(new JpaProduct(product.getName(),
-              product.getUnit(), product.getPrice(), product.getDescription()));
+              product.getUnit(), product.getPrice(), product.getCategoryId(),
+              product.getSupplierId(), product.getDescription(), product.getAvailable()));
    }
 
    @Override

@@ -17,4 +17,8 @@ public interface Product {
    Timestamp getCreatedAt();
 
    boolean getAvailable();
+
+   long getCategoryId();
+
+   long getSupplierId();
 }

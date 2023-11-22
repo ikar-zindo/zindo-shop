@@ -42,6 +42,7 @@ public class JpaProductService implements ProductService {
 
    @Override
    public void add(Product product) {
+
       JpaProduct savedProduct = productRepository.save(new JpaProduct(product.getName(),
               product.getUnit(), product.getPrice(), product.getCategoryId(),
               product.getSupplierId(), product.getDescription(), product.getAvailable()));

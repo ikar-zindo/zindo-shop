@@ -23,7 +23,7 @@ USE `zindo-shop`;
 --
 
 CREATE TABLE `category` (
-  `category_id` INT(11) PRIMARY KEY UNIQUE AUTO_INCREMENT,
+  `category_id` BIGINT PRIMARY KEY UNIQUE AUTO_INCREMENT,
   `category_name` VARCHAR(255) DEFAULT NULL,
   `description` VARCHAR(2550) DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -51,10 +51,10 @@ INSERT INTO `category` (`category_name`, `description`) VALUES
 --
 
 CREATE TABLE `product` (
-  `product_id` INT(11) PRIMARY KEY UNIQUE AUTO_INCREMENT,
+  `product_id` BIGINT PRIMARY KEY UNIQUE AUTO_INCREMENT,
   `product_name` VARCHAR(255) NOT NULL,
-  `category_id` INT(11) DEFAULT NULL,
-  `supplier_id` INT(11) DEFAULT NULL,
+  `category_id` BIGINT DEFAULT NULL,
+  `supplier_id` BIGINT DEFAULT NULL,
   `unit` VARCHAR(255) DEFAULT NULL,
   `price` DECIMAL(7,2) DEFAULT 0.01,
   `description` TEXT DEFAULT NULL,
@@ -152,7 +152,7 @@ INSERT INTO `product` (`product_name`, `supplier_id`,  `category_id`, `unit`, `p
 --
 
 CREATE TABLE `supplier` (
-  `supplier_id` int(11) PRIMARY KEY UNIQUE AUTO_INCREMENT,
+  `supplier_id` BIGINT PRIMARY KEY UNIQUE AUTO_INCREMENT,
   `supplier_name` VARCHAR(255) DEFAULT NULL,
   `contact_name` VARCHAR(255) DEFAULT NULL,
   `address` VARCHAR(255) DEFAULT NULL,
@@ -206,7 +206,7 @@ INSERT INTO `supplier` (`supplier_name`, `contact_name`, `address`, `city`, `pos
 --
 
 CREATE TABLE `customer` (
-  `customer_id` INT(11) PRIMARY KEY UNIQUE AUTO_INCREMENT,
+  `customer_id` BIGINT PRIMARY KEY UNIQUE AUTO_INCREMENT,
   `customer_name` VARCHAR(123) DEFAULT NULL,
   `age` INT(3) DEFAULT NULL,
   `email` VARCHAR(123) DEFAULT NULL,
@@ -240,8 +240,8 @@ INSERT INTO `customer` (`customer_name`, `age`, `email`, `address`, `city`, `pos
 --
 
 CREATE TABLE `cart` (
-  `cart_id` INT(11) PRIMARY KEY UNIQUE AUTO_INCREMENT,
-  `customer_id` INT NOT NULL,
+  `cart_id` BIGINT PRIMARY KEY UNIQUE AUTO_INCREMENT,
+  `customer_id` BIGINT NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `paid` BOOL DEFAULT FALSE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -268,8 +268,8 @@ INSERT INTO `cart` (`customer_id`) VALUES
 --
 
 CREATE TABLE `cart_product` (
-  `cart_product_id` INT(11) PRIMARY KEY UNIQUE AUTO_INCREMENT,
-  `cart_id` INT NOT NULL,
+  `cart_product_id` BIGINT PRIMARY KEY UNIQUE AUTO_INCREMENT,
+  `cart_id` BIGINT NOT NULL,
   `product_id` INT NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -345,19 +345,22 @@ ALTER TABLE `cart`
 --
 -- Constraints for table `product`
 --
+
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`сategory_id`),
-  ADD CONSTRAINT `product_ibfk_supplier` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`);
+	ADD CONSTRAINT `product_ibfk_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
+	ADD CONSTRAINT `product_ibfk_supplier` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`);
 
 --
 -- Constraints for table `cart`
 --
+
 ALTER TABLE `cart`
   ADD CONSTRAINT `products_ibfk_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`);
   
 --
 -- Constraints for table `cart_product`
 --
+
 ALTER TABLE `cart_product` 
 	ADD CONSTRAINT `cart_product_ibfk_cart` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`),
 	ADD CONSTRAINT `cart_product_ibfk_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
@@ -402,4 +405,4 @@ CREATE TABLE `task` (
 --
 
 ALTER TABLE `task`
-  ADD KEY `task_id` (`task_id`),
+  ADD KEY `task_id` (`task_id`);

@@ -8,7 +8,6 @@ import com.telran.zindoshop._2repo.ProductRepository;
 import com.telran.zindoshop._3service.jpa.JpaCategoryService;
 import com.telran.zindoshop._3service.jpa.JpaProductService;
 import com.telran.zindoshop._3service.jpa.JpaSupplierService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +34,17 @@ public class ProductController {
    @GetMapping("")
    public String getAll(Model model) {
       Iterable<Product> products = service.getAll();
+
+      long count = service.getCount();
+      double totalPrice = service.getTotalPrice();
+      double avgPrice = service.getAveragePrice();
+
       model.addAttribute("products", products);
+      model.addAttribute("count", count);
+      model.addAttribute("totalPrice", totalPrice);
+      model.addAttribute("avgPrice", avgPrice);
+
+
 
       return "/products/all";
    }
@@ -76,8 +85,7 @@ public class ProductController {
                                   @RequestParam(name = "available", required = false, defaultValue = "false") boolean available,
                                   Model model) {
 
-//      JpaProduct product = new JpaProduct(product_name, unit, price, description);
-      JpaProduct product = new JpaProduct(product_name, unit, price, supplier_id, category_id, description, available);
+      JpaProduct product = new JpaProduct(product_name, unit, price, category_id, supplier_id, description, available);
 
       service.add(product);
 
@@ -91,7 +99,10 @@ public class ProductController {
       }
 
       JpaProduct product = (JpaProduct) service.getById(id);
+
       model.addAttribute("product", product);
+      model.addAttribute("category", categoryService.getById(product.getCategoryId()).getName());
+      model.addAttribute("supplier", supplierService.getById(product.getSupplierId()).getName());
 
       return "/products/info";
    }
@@ -103,7 +114,12 @@ public class ProductController {
       }
 
       JpaProduct product = (JpaProduct) service.getById(id);
+      Iterable<Category> categories = categoryService.getAll();
+      Iterable<Supplier> suppliers = supplierService.getAll();
+
       model.addAttribute("product", product);
+      model.addAttribute("categories", categories);
+      model.addAttribute("suppliers", suppliers);
 
       return "/products/edit";
    }
@@ -114,12 +130,18 @@ public class ProductController {
                                @RequestParam String unit,
                                @RequestParam @Valid Double price,
                                @RequestParam String description,
+                               @RequestParam long category_id,
+                               @RequestParam long supplier_id,
+                               @RequestParam(name = "available", required = false, defaultValue = "false") boolean available,
                                Model model) {
 
       JpaProduct product = (JpaProduct) service.getById(id);
       JpaProduct product1 = repository.findById(id).orElseThrow();
 
       // todo: реализовать для service, а не repository
+      /**
+       * При вызове save(product) сохраняет корректно, но добавляет дубликат
+       */
 //      product.setProduct_name(product_name);
 //      product.setUnit(unit);
 //      product.setPrice(price);
@@ -132,11 +154,13 @@ public class ProductController {
       product1.setUnit(unit);
       product1.setPrice(price);
       product1.setDescription(description);
+      product1.setCategory_id(category_id);
+      product1.setSupplier_id(supplier_id);
       repository.save(product1);
 
       model.addAttribute("product", product);
 
-      return "redirect:/product";
+      return "redirect:/product/{id}";
    }
 
    @PostMapping("/{id}/remove")

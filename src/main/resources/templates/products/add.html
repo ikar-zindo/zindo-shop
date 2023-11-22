@@ -138,21 +138,6 @@
 
 		<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-			<!-- old working form -->
-			<!--			<div class="container mt-5 mb-5">-->
-			<!--				<h1>Add new product</h1>-->
-			<!--				<form action="/product/add" method="post">-->
-			<!--					<input type="text" name="product_name" placeholder="Введите имя товара" class="form-control"><br>-->
-			<!--					<input type="text" name="unit" placeholder="Введите тип упаковки" class="form-control"><br>-->
-			<!--					<input type="number" name="price" placeholder="Введите цену товара" class="form-control" step="any"><br>-->
-			<!--					<textarea name="description" placeholder="Введите описание товара" class="form-control"-->
-			<!--								 step="any"></textarea><br>-->
-
-			<!--					<button type="submit" class="btn btn-success">Добавить товар</button>-->
-			<!--				</form>-->
-			<!--			</div>-->
-
-
 			<div class="col-md-7 col-lg-8">
 				<h4 class="mb-3">Add product</h4>
 				<form class="needs-validation was-validated" action="/product/add" method="post">
@@ -201,7 +186,7 @@
 							</div>
 						</div>
 
-						<div class="col-md-4">
+						<div class="col-md-7">
 							<label class="form-label">Supplier</label>
 							<select class="form-select" name="supplier_id">
 								<option th:each="el : ${suppliers}" th:text="${el.name}" th:value="${el.id}"></option>
@@ -219,11 +204,6 @@
 						<input type="checkbox" class="form-check-input" id="availableCheckbox" name="available" checked>
 						<label class="form-check-label" for="availableCheckbox">Available</label>
 					</div>
-
-<!--					<div class="form-check">-->
-<!--						<input type="checkbox" class="form-check-input" name="available" th:checked="available">-->
-<!--						<label class="form-check-label">Available</label>-->
-<!--					</div>-->
 
 					<hr class="my-4">
 
@@ -250,7 +230,3 @@
 </body>
 
 </html>
-
-
-
-

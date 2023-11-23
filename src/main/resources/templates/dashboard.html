@@ -141,8 +141,7 @@
 
 		<!--Main-->
 		<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-			<div
-					  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+			<div lass="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 				<h1 class="h2">Dashboard</h1>
 				<div class="btn-toolbar mb-2 mb-md-0">
 					<div class="btn-group me-2">
@@ -168,7 +167,8 @@
 							<h4 class="my-0 fw-normal">Total price</h4>
 						</div>
 						<div class="card-body">
-							<h3 class="card-title pricing-card-title">€ <small class="text-body-secondary fw-light" th:text="${totalPrice}"/></h3>
+							<h3 class="card-title pricing-card-title">€ <small class="text-body-secondary fw-light"
+																								th:text="${totalPrice}"/></h3>
 
 <!--							<button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>-->
 						</div>
@@ -180,7 +180,8 @@
 							<h4 class="my-0 fw-normal">Average price</h4>
 						</div>
 						<div class="card-body">
-							<h3 class="card-title pricing-card-title">€ <small class="text-body-secondary fw-light" th:text="${avgPrice}"/></h3>
+							<h3 class="card-title pricing-card-title">€ <small class="text-body-secondary fw-light"
+																								th:text="${avgPrice}"/></h3>
 
 <!--							<button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>-->
 						</div>
@@ -189,10 +190,11 @@
 				<div class="col">
 					<div class="card mb-4 rounded-3 shadow-sm border-primary">
 						<div class="card-header py-3 text-bg-primary border-primary">
-							<h3 class="my-0 fw-normal">Count products</h3>
+							<h4 class="my-0 fw-normal">Count products</h4>
 						</div>
 						<div class="card-body">
-							<h1 class="card-title pricing-card-title"><small class="text-body-secondary fw-light" th:text="${count}"/></h1>
+							<h3 class="card-title pricing-card-title"><small class="text-body-secondary fw-light"
+																							 th:text="${count}"/></h3>
 <!--							<button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>-->
 						</div>
 					</div>

@@ -68,10 +68,12 @@ public class JpaProductService implements ProductService {
 
    @Override
    public double getAveragePrice() {
-      return productRepository.findAll().stream()
+      double avgPrice = productRepository.findAll().stream()
               .mapToDouble(JpaProduct::getPrice)
               .average()
               .orElse(-1);
+
+      return Math.round(avgPrice * 100.0) / 100.0;
    }
 
    /**

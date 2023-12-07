@@ -56,6 +56,7 @@ public class JpaSupplier implements Supplier {
       this.address = address;
       this.city = city;
       this.phone = phone;
+
       created_at = new Timestamp(System.currentTimeMillis());
       available = true;
    }

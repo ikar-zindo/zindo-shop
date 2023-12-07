@@ -115,10 +115,10 @@
 <body>
 
 <!--Themes-2-->
-<div th:insert="/blocks/themes :: themes-2"></div>
+<div th:insert="~{/blocks/themes :: themes-2}"></div>
 
 <!--Header-dashboard-->
-<div th:insert="/blocks/header :: header-dashboard"></div>
+<div th:insert="~{/blocks/header :: header-dashboard}"></div>
 
 <div class="container-fluid">
 	<div class="row">
@@ -132,7 +132,7 @@
 					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
 							  aria-label="Close"></button>
 				</div>
-				<div th:insert="/blocks/sidebar :: sidebar"></div>
+				<div th:insert="~{/blocks/sidebar :: sidebar}"></div>
 			</div>
 		</div>
 
@@ -140,13 +140,7 @@
 
 
 			<div class="container mt-5 mb-5">
-				supplier_name
-				contact_name
-				address
-				city
-				postal_code
-				country
-				phone
+
 				<h1>Add new supplier</h1>
 				<form action="/supplier/add" method="post">
 
@@ -163,7 +157,7 @@
 				</form>
 			</div>
 
-			<foot th:insert="/blocks/footer :: footer"></foot>
+			<foot th:insert="~{/blocks/footer :: footer}"></foot>
 
 		</main>
 	</div>

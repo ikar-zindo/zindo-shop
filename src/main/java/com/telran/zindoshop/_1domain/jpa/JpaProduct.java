@@ -25,8 +25,8 @@ public class JpaProduct implements Product {
    @Column(name = "unit")
    private String unit;
 
-   @Column(name = "price", columnDefinition = "DOUBLE DEFAULT 0.1")
-   @DecimalMin(value = "0.0")
+   @Column(name = "price", columnDefinition = "DOUBLE DEFAULT 0.01")
+   @DecimalMin(value = "0.01")
    @DecimalMax(value = "999999.99")
    private Double price;
 

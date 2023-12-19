@@ -9,7 +9,7 @@ SET time_zone = "+01:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 
-CREATE DATABASE IF NOT EXISTS `zindo-shop` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE IF NOT EXISTS `zindo-shop` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `zindo-shop`;
 
 --
@@ -28,7 +28,7 @@ CREATE TABLE `category` (
   `description` VARCHAR(2550) DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `available` BOOL DEFAULT TRUE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `category`
@@ -60,7 +60,7 @@ CREATE TABLE `product` (
   `description` TEXT DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `available` BOOL DEFAULT TRUE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
@@ -162,7 +162,7 @@ CREATE TABLE `supplier` (
   `phone` VARCHAR(255) DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `available` BOOL DEFAULT TRUE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `supplier`
@@ -216,7 +216,7 @@ CREATE TABLE `customer` (
   `country` VARCHAR(123) DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `is_blocked` BOOL DEFAULT FALSE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customer`
@@ -244,7 +244,7 @@ CREATE TABLE `cart` (
   `customer_id` BIGINT NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `paid` BOOL DEFAULT FALSE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cart`
@@ -270,9 +270,9 @@ INSERT INTO `cart` (`customer_id`) VALUES
 CREATE TABLE `cart_product` (
   `cart_product_id` BIGINT PRIMARY KEY UNIQUE AUTO_INCREMENT,
   `cart_id` BIGINT NOT NULL,
-  `product_id` INT NOT NULL,
+  `product_id` BIGINT NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cart_product`
@@ -389,7 +389,7 @@ CREATE TABLE `task` (
   `description` VARCHAR(2000) NOT NULL,
   `created_at` TIMESTAMP(6) NOT NULL,
   PRIMARY KEY (`task_id`)
-)ENGINE = InnoDBDEFAULT CHARACTER SET = utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 --

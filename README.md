@@ -8,7 +8,7 @@ To push a new tag to this repository:
 ### View
 Copy to browser address bar
 
-`db:3306/zindo-shop/dashboard`
+`http://localhost:8081/dashboard`
 
 
 

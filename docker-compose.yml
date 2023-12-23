@@ -2,17 +2,15 @@ version: '3.8'
 
 services:
   db:
-    image: mysql:8.0.33
+    image: mysql:8.0.33 # Используем образ MySQL версии 8.0.33
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 12345  # Укажите пароль для root пользователя
-      MYSQL_DATABASE: zindo-shop  # Укажите название вашей базы данных
-#      MYSQL_USER: ваш_пользователь  # Укажите имя пользователя
-#      MYSQL_PASSWORD: ваш_пароль_пользователя  # Укажите пароль пользователя
-    volumes:
-      - ./zindo-shop.sql:/docker-entrypoint-initdb.d/zindo-shop.sql # Путь для инициализации базы данных
+      MYSQL_ROOT_PASSWORD: 12345 # Установка пароля для root пользователя
+      MYSQL_DATABASE: zindo-shop # Создание базы данных (замените your_database на ваше название)
     ports:
       - "3307:3306"
+    volumes:
+      - ./zindo-shop.sql:/docker-entrypoint-initdb.d/zindo-shop.sql
 
   app:
     build:
@@ -21,26 +19,29 @@ services:
       - db
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/zindo-shop
+      #      - SPRING_FLYWAY_URL=jdbc:mysql://db:3306/zindo-shop
+      #      - SPRING_FLYWAY_USER=root
+      #      - SPRING_FLYWAY_PASSWORD=12345
       - SPRING_DATASOURCE_PASSWORD=12345
       - SPRING_DATASOURCE_USERNAME=root
     restart: always
     ports:
       - "8081:8081"
 
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
-    depends_on:
-      - db
-    environment:
-      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin-t.org
-      PGADMIN_DEFAULT_PASSWORD: admin
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    #    volumes:
-    #      - pgadmin:/var/lib/pgadmin
-    ports:
-      - "5050:80"
-    restart: unless-stopped
+#  pgadmin:
+#    container_name: pgadmin
+#    image: dpage/pgadmin4
+#    depends_on:
+#      - db
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin-t.org
+#      PGADMIN_DEFAULT_PASSWORD: admin
+#      PGADMIN_CONFIG_SERVER_MODE: 'False'
+#    #    volumes:
+#    #      - pgadmin:/var/lib/pgadmin
+#    ports:
+#      - "5050:80"
+#    restart: unless-stopped
 
 #  volumes:
 #    db:

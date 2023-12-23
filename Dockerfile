@@ -9,7 +9,7 @@ RUN mvn -f /home/app/pom.xml clean package -Dmaven.test.skip=true
 #
 # Package stage
 #
-FROM openjdk:17-slim-buster
+FROM openjdk:21-ea-1-jdk-slim-buster
 COPY --from=build /home/app/target/zindo-shop-0.0.1-SNAPSHOT.jar /usr/local/lib/zindo-shop.jar
 EXPOSE 8081
 #EXPOSE 80

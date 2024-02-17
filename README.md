@@ -4,7 +4,6 @@
 To push a new tag to this repository:
 
 `docker-compose build`
-
 `docker-compose up`
 
 ### [View](http://localhost:8081/dashboard)

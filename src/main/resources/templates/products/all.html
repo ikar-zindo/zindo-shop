@@ -115,16 +115,16 @@
 <body>
 
 <!--Themes-2-->
-<div th:insert="~{/blocks/themes :: themes-2}"></div>
+<div th:insert="~{blocks/themes :: themes-2}"></div>
 
 <!--Header-dashboard-->
-<div th:insert="~{/blocks/header :: header-dashboard}"></div>
+<div th:insert="~{blocks/header :: header-dashboard}"></div>
 
 <div class="container-fluid">
 	<div class="row">
 
 		<!--Sidebar-->
-		<!--			<div th:insert="/blocks/sidebar :: sidebar"></div>-->
+		<!--			<div th:insert="/bocks/sidebar :: sidebar"></div>-->
 		<div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
 			<div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
 				  aria-labelledby="sidebarMenuLabel">
@@ -133,7 +133,7 @@
 					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
 							  aria-label="Close"></button>
 				</div>
-				<div th:insert="~{/blocks/sidebar :: sidebar}"></div>
+				<div th:insert="~{blocks/sidebar :: sidebar}"></div>
 			</div>
 		</div>
 
@@ -176,7 +176,7 @@
 				</div>
 			</div>
 
-			<footer th:insert="~{/blocks/footer :: footer}"></footer>
+			<footer th:insert="~{blocks/footer :: footer}"></footer>
 
 		</main>
 	</div>

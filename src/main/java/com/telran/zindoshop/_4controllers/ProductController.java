@@ -46,7 +46,7 @@ public class ProductController {
 
 
 
-      return "/products/all";
+      return "products/all";
    }
 
    /**
@@ -62,7 +62,7 @@ public class ProductController {
       model.addAttribute("categories", categories);
       model.addAttribute("suppliers", suppliers);
 
-      return "/products/add";
+      return "products/add";
    }
 
 
@@ -104,7 +104,7 @@ public class ProductController {
       model.addAttribute("category", categoryService.getById(product.getCategoryId()).getName());
       model.addAttribute("supplier", supplierService.getById(product.getSupplierId()).getName());
 
-      return "/products/info";
+      return "products/info";
    }
 
    @GetMapping("/{id}/edit")
@@ -121,7 +121,7 @@ public class ProductController {
       model.addAttribute("categories", categories);
       model.addAttribute("suppliers", suppliers);
 
-      return "/products/edit";
+      return "products/edit";
    }
 
    @PostMapping("/{id}/edit")
